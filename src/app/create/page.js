@@ -1,4 +1,7 @@
 "use client";
+//기본적으로 클라이언트 컴포넌트에서는 환경변수 접속이 안됨 (process.env.API_URL)
+//앞에 NEXT_PUBLIC을 붙이면 사용가능함(process.env.NEXT_PUBLIC_API_URL)
+//보안을 위해!
 
 import { useRouter } from "next/navigation";
 
@@ -17,7 +20,7 @@ export default function Create() {
           },
           body: JSON.stringify({ title, body }),
         };
-        fetch(`http://localhost:9999/topics`, options)
+        fetch(process.env.NEXT_PUBLIC_API_URL + `topics`, options)
           .then(res => res.json())
           .then(result => {
             console.log(result);
