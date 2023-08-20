@@ -10,7 +10,9 @@ export const metadata = {
 //페이지 전체를 변경하지 않고 변경되는 부분만 변경하며 한 번 방문했던 페이지는 소스를 다운로드 해놓은 데이터를 사용한다.
 
 export default async function RootLayout({ children }) {
-  const resp = await fetch("http://localhost:9999/topics");
+  const resp = await fetch("http://localhost:9999/topics", {
+    cache: "no-store",
+  });
   const topics = await resp.json();
   return (
     <html>
